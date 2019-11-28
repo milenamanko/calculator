@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+<div>
+    <form action="#" th:action="@{/calculate}" th:object="${newOperation}" method="post">
+        <div class="row">
+            <div class="form-group col-md-2">
+                <input th:field="*{firstNum}" class="form-control">
+                <select th:field="*{operationType}" class="form-control" id="operationType">
+                    <option th:each="operationType : ${T(com.myla.calculator.OperationType).values()}"
+                            th:value="${operationType}"
+                            th:text="${operationType}">
+                    </option>
+                </select>
+                <input th:field="*{secondNum}" class="form-control">
+                <button class="btn btn-dark" type="submit">Calculate</button>
+                <div class="form-group col-md-2">
+                <p th:text="${calculationResult}"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
